@@ -6,28 +6,36 @@ import Icon from '../../Components/icon';
 
 export const TabInit = ({Color}) => {
     const styles = styleTabInit(Color);
-    const elevationAni = useRef(new Animated.Value(0)).current
+    const elevationAni = useRef(new Animated.Value(0)).current;
 
     return (
         <View style={styles.container}>
 
             <Text allowFontScaling={false} style={styles.title}>Thiết lập từ khóa</Text>
-            <Animated.View style={[styles.stroke_shadow,{elevation:elevationAni.interpolate({
-                    inputRange: [0, verticalScale(50)],
+            <Animated.View style={[styles.stroke_shadow, {
+                elevation: elevationAni.interpolate({
+                    inputRange: [0, verticalScale(10)],
                     outputRange: [0, 2],
                     extrapolate: 'clamp',
-                })}]} />
+                }),
+                shadowOpacity: elevationAni.interpolate({
+                    inputRange: [0, verticalScale(50)],
+                    outputRange: [0, 0.6],
+                    extrapolate: 'clamp',
+                })
+            }]}/>
 
             <ScrollView style={styles.container} showsVerticalScrollIndicator={false}
+                        contentContainerStyle={styles.containerScrollview}
                         onScroll={Animated.event(
                             [{
                                 nativeEvent: {
                                     contentOffset: {
-                                        y: elevationAni
+                                        y: elevationAni,
                                     },
                                 },
                             }],
-                            {useNativeDriver: false}
+                            {useNativeDriver: false},
                         )}>
 
                 {/*Cụm ô nhập*/}

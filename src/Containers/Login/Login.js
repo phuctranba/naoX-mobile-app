@@ -15,6 +15,7 @@ export default class Login extends Component {
             button1: {name: 'Đăng nhập', value: 1},
             button2: {name: 'Xác nhận', value: 2},
             button3: {name: 'Đăng ký', value: 3},
+            nameLeft:"",
         };
         this.ani_signup = new Animated.Value(0);
         this.ani_forget = new Animated.Value(100);
@@ -47,6 +48,9 @@ export default class Login extends Component {
                 value_ani_button = 0;
                 break;
             case 2:
+                if(this.state.button1.value !== 2){
+                    this.state.nameLeft = this.state.button1.name;
+                }
                 value_ani_signup = 0;
                 value_ani_forget = 0;
                 value_ani_button = 100;
@@ -107,9 +111,9 @@ export default class Login extends Component {
             outputRange: [0, 1],
         });
 
-        const font_size_pass = this.ani_forget.interpolate({
-            inputRange: [0, 60, 100],
-            outputRange: [moderateScale(16, 0.3), moderateScale(0, 0.3), moderateScale(0, 0.3)],
+        const scale_size_pass = this.ani_forget.interpolate({
+            inputRange: [0, 50, 100],
+            outputRange: [1,0,0],
         });
 
         const height_forget = this.ani_forget.interpolate({
@@ -144,7 +148,7 @@ export default class Login extends Component {
 
                 <Image
                     style={this.style.image_logo}
-                    resizeMode={'center'}
+                    resizeMode={'contain'}
                     source={require('../../Assets/Images/logo-naox-nospace.png')}
                 />
                 <Text allowFontScaling={false} style={this.style.slogan}>Giúp bạn tìm mọi thứ</Text>
@@ -377,7 +381,7 @@ export default class Login extends Component {
 
                             }}>
                             <Animated.Text allowFontScaling={false}
-                                           style={[this.style.textBottom, {fontSize: font_size_pass}]}>{this.state.button2.name}</Animated.Text>
+                                           style={[this.style.textBottom, {fontSize: moderateScale(16,0.3),transform:[{scale:scale_size_pass}]}]}>{this.state.nameLeft}</Animated.Text>
                         </TouchableOpacity>
                     </Animated.View>
 

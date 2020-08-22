@@ -186,11 +186,17 @@ export const TabPreview = ({Color}) => {
         <View style={styles.container}>
             <Text allowFontScaling={false} style={styles.title}>Đánh giá kết quả</Text>
             <Animated.View style={[styles.stroke_shadow,{elevation:elevationAni.interpolate({
-                    inputRange: [0, verticalScale(50)],
+                    inputRange: [0, verticalScale(10)],
                     outputRange: [0, 2],
+                    extrapolate: 'clamp',
+                }),
+                shadowOpacity: elevationAni.interpolate({
+                    inputRange: [0, verticalScale(50)],
+                    outputRange: [0, 0.6],
                     extrapolate: 'clamp',
                 })}]} />
             <ScrollView showsVerticalScrollIndicator={false}
+                        contentContainerStyle={styles.containerScrollview}
                         onScroll={Animated.event(
                             [{
                                 nativeEvent: {

@@ -4,8 +4,10 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '10.0'
 
 target 'naoX' do
-  config = use_native_modules!
+  pod 'RNCharts', :path => '../node_modules/react-native-charts-wrapper'
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  config = use_native_modules!
   use_react_native!(:path => config["reactNativePath"])
 
   target 'naoXTests' do
@@ -25,6 +27,7 @@ end
 
 target 'naoX-tvOS' do
   # Pods for naoX-tvOS
+
 
   target 'naoX-tvOSTests' do
     inherit! :search_paths

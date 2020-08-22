@@ -32,7 +32,7 @@ export default style = (Color) => {
         },
         viewInput:{
             width: '300@ms',
-            height: '46@vs',
+            height: '46@ms1',
             flexDirection: 'row',
             alignItems: 'center',
             borderColor: Color.blue,
@@ -52,13 +52,27 @@ export default style = (Color) => {
         buttonSignIn:{
             justifyContent: 'center',
             width: '300@ms',
-            height: '46@vs',
+            height: '46@ms1',
             flexDirection: 'row',
             alignItems: 'center',
             borderRadius: '25@ms',
             marginTop: '10@vs',
-            elevation:4,
-            backgroundColor:Color.blue
+            ...Platform.select({
+                ios: {
+                    shadowColor: "#000",
+                    shadowOffset: {
+                        width: 0,
+                        height: 1,
+                    },
+                    shadowOpacity: 0.4,
+                    shadowRadius: 2.22,
+                },
+                android: {
+                    elevation: 2
+                }
+            }),
+            backgroundColor:Color.blue,
+
         },
         viewOr:{
             width: '300@ms',
@@ -75,7 +89,7 @@ export default style = (Color) => {
         buttonBottom:{
             flexDirection: 'row',
             alignItems: 'center',
-            height: '46@vs',
+            height: '46@ms1',
             justifyContent:'center',
         },
         touchBottom:{
@@ -85,7 +99,20 @@ export default style = (Color) => {
             justifyContent:'center',
             borderRadius: '25@ms',
             backgroundColor: Color.green_dark,
-            elevation: 2
+            ...Platform.select({
+                ios: {
+                    shadowColor: "#000",
+                    shadowOffset: {
+                        width: 0,
+                        height: 1,
+                    },
+                    shadowOpacity: 0.4,
+                    shadowRadius: 2.22,
+                },
+                android: {
+                    elevation: 2
+                }
+            }),
         },
         view_icon_input:{
             width: '25@ms',
