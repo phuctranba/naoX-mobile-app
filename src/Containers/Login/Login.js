@@ -12,9 +12,9 @@ export default class Login extends Component {
         super(props);
         this.style = style(lightMode);
         this.state = {
-            button1: {name: 'Đăng nhập', value: 1, displayBigButton: 'Đăng nhập'},
-            button2: {name: 'Quên mật khẩu', value: 2, displayBigButton: 'Xác nhận'},
-            button3: {name: 'Đăng ký', value: 3, displayBigButton: 'Đăng ký'},
+            button1: {name: 'Đăng nhập', value: 1},
+            button2: {name: 'Xác nhận', value: 2},
+            button3: {name: 'Đăng ký', value: 3},
         };
         this.ani_signup = new Animated.Value(0);
         this.ani_forget = new Animated.Value(100);
@@ -35,10 +35,10 @@ export default class Login extends Component {
 
     switchButton(value, numberButton) {
         let value_ani_signup, value_ani_forget, value_ani_button;
-        if(numberButton===1&&this.state.button1.value===2){
-            let switch_btn =this.state.button2;
-            this.state.button2=this.state.button1;
-            this.state.button1=switch_btn;
+        if (numberButton === 1 && this.state.button1.value === 2) {
+            let switch_btn = this.state.button2;
+            this.state.button2 = this.state.button1;
+            this.state.button1 = switch_btn;
         }
         switch (value) {
             case 1:
@@ -80,6 +80,12 @@ export default class Login extends Component {
             inputRange: [0, 100],
             outputRange: [0, verticalScale(56)],
         });
+
+        const marrgin_signup = this.ani_signup.interpolate({
+            inputRange: [0, 100],
+            outputRange: [verticalScale(20), 0],
+        });
+
         const translatey_name = this.ani_signup.interpolate({
             inputRange: [0, 100],
             outputRange: [verticalScale(-28), 0],
@@ -101,6 +107,11 @@ export default class Login extends Component {
             outputRange: [0, 1],
         });
 
+        const font_size_pass = this.ani_forget.interpolate({
+            inputRange: [0, 60, 100],
+            outputRange: [moderateScale(16, 0.3), moderateScale(0, 0.3), moderateScale(0, 0.3)],
+        });
+
         const height_forget = this.ani_forget.interpolate({
             inputRange: [0, 100],
             outputRange: [0, verticalScale(56)],
@@ -111,24 +122,19 @@ export default class Login extends Component {
             outputRange: [moderateScale(60), 0],
         });
 
-        const colorButtonSmall = this.ani_button.interpolate({
+        const sizeButtonLeft = this.ani_button.interpolate({
             inputRange: [0, 100],
-            outputRange: [lightMode.green_dark,lightMode.blue],
+            outputRange: ['0%', '48%'],
         });
 
-        const sizeButtonSmall = this.ani_button.interpolate({
+        const sizeButtonRight = this.ani_button.interpolate({
             inputRange: [0, 100],
-            outputRange: ['37%','48.5%'],
+            outputRange: ['70%', '48%'],
         });
 
-        const sizeTextButtonSmall = this.ani_button.interpolate({
+        const marginButtonBottom = this.ani_button.interpolate({
             inputRange: [0, 100],
-            outputRange: [moderateScale(13),moderateScale(16)],
-        });
-
-        const colorButtonBig = this.ani_button.interpolate({
-            inputRange: [0, 100],
-            outputRange: [lightMode.blue,lightMode.green_dark],
+            outputRange: ['0%', '4%'],
         });
 
         return (
@@ -150,7 +156,7 @@ export default class Login extends Component {
 
 
                 {/*form*/}
-                <View style={this.style.container_input}>
+                <Animated.View style={{marginVertical:marrgin_signup}}>
                     {/*Email*/}
                     <View style={[this.style.viewInput, {zIndex: 2}]}>
                         <View style={this.style.view_icon_input}>
@@ -250,7 +256,7 @@ export default class Login extends Component {
                         transform: [{
                             translateY: translatey_pass,
                         }],
-                        opacity:opa_pass
+                        opacity: opa_pass,
                     }]}>
                         <View style={this.style.viewInput}>
                             <View style={this.style.view_icon_input}>
@@ -314,70 +320,86 @@ export default class Login extends Component {
                         </View>
 
                     </Animated.View>
+
+                    {/*Quên mật khẩu*/}
+                    <TouchableOpacity activeOpacity={0.7}
+                                      style={this.style.view_forget_pass_text}
+                                      onPress={() => {
+                                          this.switchButton(this.state.button2.value, 0);
+                                          this.setState({
+                                              button1: this.state.button2,
+                                              button2: this.state.button1,
+                                          });
+                                      }}>
+                        <Animated.Text allowFontScaling={false}
+                                       style={[this.style.forget_pass_text, {opacity: opa_pass}]}>Quên mật
+                            khẩu?</Animated.Text>
+                    </TouchableOpacity>
+
+                </Animated.View>
+
+                {/*Nút trên*/}
+                <Animated.View>
+                    <TouchableOpacity
+                        activeOpacity={0.7}
+                        style={this.style.buttonSignIn}
+                        onPress={() => {
+                            this.props.navigation.navigate('InitCampaign');
+                        }}>
+                        <Text allowFontScaling={false}
+                              style={this.style.textSignIn}>{this.state.button1.name}</Text>
+                    </TouchableOpacity>
+                </Animated.View>
+
+                <View style={this.style.viewOr}>
+                    <View style={this.style.viewStrokeOr}/>
+                    <Text allowFontScaling={false} style={this.style.textOr}>Hoặc</Text>
+                    <View style={this.style.viewStrokeOr}/>
                 </View>
 
-                <View>
-                    {/*Nút trên*/}
-                    <Animated.View style={[this.style.buttonSignIn,{backgroundColor: colorButtonBig}]}>
+
+                {/*2 nút dưới*/}
+                <View style={this.style.viewButtonBottom}>
+
+                    <Animated.View
+                        style={[this.style.buttonBottom, {
+                            width: sizeButtonLeft,
+                            marginRight: marginButtonBottom,
+                        }]}>
                         <TouchableOpacity
+                            style={this.style.touchBottom}
                             onPress={() => {
-                                this.props.navigation.navigate('InitCampaign')
+                                this.switchButton(this.state.button2.value, 0);
+                                this.setState({
+                                    button1: this.state.button2,
+                                    button2: this.state.button1,
+                                });
+
                             }}>
-                            <Text allowFontScaling={false}
-                                  style={this.style.textSignIn}>{this.state.button1.displayBigButton}</Text>
+                            <Animated.Text allowFontScaling={false}
+                                           style={[this.style.textBottom, {fontSize: font_size_pass}]}>{this.state.button2.name}</Animated.Text>
                         </TouchableOpacity>
                     </Animated.View>
 
-                    <View style={this.style.viewOr}>
-                        <View style={this.style.viewStrokeOr}/>
-                        <Text allowFontScaling={false} style={this.style.textOr}>Hoặc</Text>
-                        <View style={this.style.viewStrokeOr}/>
-                    </View>
 
+                    <Animated.View style={[this.style.buttonBottom, {width: sizeButtonRight}]}>
+                        <TouchableOpacity
+                            activeOpacity={0.7}
+                            style={this.style.touchBottom}
+                            onPress={() => {
+                                this.switchButton(this.state.button3.value, 1);
+                                this.setState({
+                                        button1: this.state.button3,
+                                        button3: this.state.button1,
+                                    },
+                                );
+                            }}>
+                            <Text allowFontScaling={false}
+                                  style={this.style.textBottom}>{this.state.button3.name}</Text>
+                        </TouchableOpacity>
+                    </Animated.View>
 
-                    {/*2 nút dưới*/}
-                    <View style={this.style.viewButtonBottom}>
-
-                        <Animated.View style={[this.style.buttonBottom, {backgroundColor: colorButtonSmall, width: sizeButtonSmall,marginRight:'3%'}]}>
-                            <TouchableOpacity
-                                onPress={() => {
-                                    this.switchButton(this.state.button2.value,0);
-                                    this.setState({
-                                        button1: this.state.button2,
-                                        button2: this.state.button1,
-                                    });
-
-                                }}>
-                                <Animated.Text allowFontScaling={false}
-                                      style={[this.style.textBottom, {
-                                          fontSize: sizeTextButtonSmall,
-                                          fontWeight:this.state.button2.value===2?'normal':'bold'
-                                      }]}>{this.state.button2.name}</Animated.Text>
-                            </TouchableOpacity>
-                        </Animated.View>
-
-
-                        <Animated.View style={[this.style.buttonBottom, {backgroundColor: lightMode.blue, flex:1}]}>
-                            <TouchableOpacity
-                                onPress={() => {
-                                    this.switchButton(this.state.button3.value,1);
-                                    this.setState({
-                                            button1: this.state.button3,
-                                            button3: this.state.button1,
-                                        },
-                                    );
-                                }}>
-                                <Text allowFontScaling={false}
-                                      style={[this.style.textBottom, {
-                                          fontSize: moderateScale(16),
-                                          fontWeight: 'bold',
-                                      }]}>{this.state.button3.name}</Text>
-                            </TouchableOpacity>
-                        </Animated.View>
-
-                    </View>
                 </View>
-
 
             </LinearGradient>
         );

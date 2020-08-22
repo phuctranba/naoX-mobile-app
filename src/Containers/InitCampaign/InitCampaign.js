@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet,TouchableOpacity} from 'react-native';
 import StepIndicator from 'react-native-step-indicator';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Swiper from 'react-native-swiper';
 import Icon from '../../Components/icon';
 import {lightMode} from '../../Utils/Values/color';
-import {moderateScale} from 'react-native-size-matters';
+import {moderateScale, verticalScale} from 'react-native-size-matters';
 import {Task_Colors} from '../../Utils/Values';
-import {SetupKeyWord} from './TabInit';
+import {TabInit} from './TabInit';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {TabPreview} from './TabPreview';
+import {TabConfirm} from './TabConfirm';
+import LinearGradient from "react-native-linear-gradient";
 
 
 const secondIndicatorStyles = {
@@ -43,7 +47,20 @@ export default class InitCampaign extends Component {
         this.state={
             posi:0
         }
-        this.ListTab = [<SetupKeyWord Color={lightMode}/>, <SetupKeyWord Color={lightMode}/>, <SetupKeyWord Color={lightMode}/>];
+        this.ListTab = [
+            {
+                nameButton:"Kiểm thử",
+                screen:<TabInit Color={lightMode}/>
+            }
+            ,
+            {
+                nameButton:"Xác nhận",
+                screen:<TabPreview Color={lightMode}/>
+            },
+            {
+                nameButton:"Thi hành",
+                screen:<TabConfirm Color={lightMode}/>
+            }];
     };
 
     onStepPress = (position: number) => {
@@ -99,7 +116,7 @@ export default class InitCampaign extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <SafeAreaView style={styles.container}>
                 <View style={styles.stepIndicator}>
                     <StepIndicator
                         stepCount={3}
@@ -120,25 +137,61 @@ export default class InitCampaign extends Component {
                     index={this.state.posi}
                     autoplay={false}
                     showsButtons
+                    nextButton={<Text style={styles.button_pages}>›</Text>}
+                    prevButton={<Text style={styles.button_pages}>‹</Text>}
                     onIndexChanged={(page) => {
                         this.setState({posi:page});
                     }}
+                    showsPagination={false}
                 >
-                    {this.ListTab.map((page,index) => this.renderViewPagerPage(page,index))}
+                    {this.ListTab.map((page,index) => this.renderViewPagerPage(page.screen,index))}
                 </Swiper>
-            </View>
+
+                <TouchableOpacity style={styles.touchConfirm}>
+                    <Text style={styles.textConfirm}>{this.ListTab[this.state.posi].nameButton}</Text>
+                </TouchableOpacity>
+                <LinearGradient colors={[lightMode.transparent, lightMode.background]}
+                                locations={[0, 0.8]}
+                                start={{x: 0, y: 0}} end={{x: 0, y: 1}} style={styles.viewGardient}/>
+            </SafeAreaView>
         );
     }
 }
 
 const styles = StyleSheet.create({
+    touchConfirm:{
+        width:200,
+        height:50,
+        backgroundColor: lightMode.green_dark,
+        justifyContent: 'center',
+        alignItems: 'center',
+        elevation:3,
+        borderRadius:15,
+        position:'absolute',
+        bottom:20,
+        alignSelf:'center'
+    },
+    textConfirm:{
+        color:lightMode.background,
+        fontWeight:'bold',
+        fontSize:20
+    },
+    viewGardient:{
+        width:'100%',
+        height:70,
+        position:'absolute',
+        bottom: 0
+    },
     container: {
         flex: 1,
         backgroundColor: '#ffffff',
     },
+    button_pages:{
+      fontSize:60,
+      color:lightMode.blue
+    },
     stepIndicator: {
-        marginVertical: 20,
-        backgroundColor: 'red'
+        marginTop:verticalScale(20)
     },
     page: {
         flex: 1,
