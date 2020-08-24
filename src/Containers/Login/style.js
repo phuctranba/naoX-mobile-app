@@ -1,4 +1,5 @@
-import {ScaledSheet} from 'react-native-size-matters';
+import {moderateScale, ScaledSheet} from 'react-native-size-matters';
+import {lightMode} from '../../Utils/Values';
 
 export default style = (Color) => {
     return ScaledSheet.create({
@@ -8,17 +9,22 @@ export default style = (Color) => {
             justifyContent: 'center',
             alignItems: 'center',
         },
-        container_input:{
-            marginVertical:'20@ms'
-        },
         slogan:{
             color: Color.blue,
             fontSize: '20@ms0.3',
             marginVertical:'15@vs',
             fontWeight: 'bold'
         },
+        forget_pass_text:{
+            color: Color.blue,
+            fontSize: '15@ms0.3',
+            margin:'10@vs',
+        },
+        view_forget_pass_text:{
+            alignSelf: 'flex-end',
+        },
         detail:{
-            marginHorizontal:'15%',
+            marginHorizontal:'10%',
             textAlign:'center',
             color: Color.blue,
             fontSize: '14@ms0.3',
@@ -26,7 +32,7 @@ export default style = (Color) => {
         },
         viewInput:{
             width: '300@ms',
-            height: '46@vs',
+            height: '46@ms1',
             flexDirection: 'row',
             alignItems: 'center',
             borderColor: Color.blue,
@@ -42,40 +48,71 @@ export default style = (Color) => {
             justifyContent: 'space-between',
             flexDirection: 'row',
             alignItems: 'center',
-            backgroundColor: Color.background
         },
         buttonSignIn:{
             justifyContent: 'center',
             width: '300@ms',
-            height: '46@vs',
+            height: '46@ms1',
             flexDirection: 'row',
             alignItems: 'center',
             borderRadius: '25@ms',
-            paddingHorizontal: '10@ms',
-            marginTop: '20@vs',
-            elevation:4
+            marginTop: '10@vs',
+            ...Platform.select({
+                ios: {
+                    shadowColor: "#000",
+                    shadowOffset: {
+                        width: 0,
+                        height: 1,
+                    },
+                    shadowOpacity: 0.4,
+                    shadowRadius: 2.22,
+                },
+                android: {
+                    elevation: 2
+                }
+            }),
+            backgroundColor:Color.blue,
+
         },
         viewOr:{
             width: '300@ms',
             flexDirection: 'row',
             justifyContent: 'center',
-            marginVertical: '10@vs',
+            marginVertical: '15@vs',
             alignItems: 'center',
         },
         viewButtonBottom:{
             flexDirection: 'row',
             width: '300@ms',
-            justifyContent: 'space-between',
-            marginBottom: '20@vs',
+            justifyContent: 'center',
         },
         buttonBottom:{
             flexDirection: 'row',
-            width: '135@ms',
-            borderRadius: '25@ms',
             alignItems: 'center',
-            height: '46@vs',
+            height: '46@ms1',
             justifyContent:'center',
-            elevation: 4
+        },
+        touchBottom:{
+            width: '100%',
+            alignItems: 'center',
+            height: '100%',
+            justifyContent:'center',
+            borderRadius: '25@ms',
+            backgroundColor: Color.green_dark,
+            ...Platform.select({
+                ios: {
+                    shadowColor: "#000",
+                    shadowOffset: {
+                        width: 0,
+                        height: 1,
+                    },
+                    shadowOpacity: 0.4,
+                    shadowRadius: 2.22,
+                },
+                android: {
+                    elevation: 2
+                }
+            }),
         },
         view_icon_input:{
             width: '25@ms',
@@ -116,7 +153,9 @@ export default style = (Color) => {
         },
         textBottom:{
             color: Color.background,
-            textAlign: 'center'
+            textAlign: 'center',
+            fontWeight: 'bold',
+            fontSize: '16@ms0.3'
         },
         textDescription:{
             color: Color.blue,
@@ -125,8 +164,7 @@ export default style = (Color) => {
             textAlign: 'center',
         },
         image_logo:{
-            height:'150@ms',
-            width:'100%',
+            height:'120@vs',
             backgroundColor:Color.transparent,
         },
     });

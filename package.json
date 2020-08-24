@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/bottom-tabs": "^5.8.0",
     "@react-navigation/native": "^5.7.3",
     "@react-navigation/stack": "^5.9.0",
     "lottie-ios": "3.1.8",
@@ -18,6 +19,7 @@
     "react": "16.13.1",
     "react-native": "0.63.2",
     "react-native-animatable": "^1.3.3",
+    "react-native-charts-wrapper": "^0.5.7",
     "react-native-fast-image": "^8.3.2",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-linear-gradient": "^2.5.6",
