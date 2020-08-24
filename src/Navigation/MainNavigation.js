@@ -10,6 +10,8 @@ import Tab3 from '../Containers/Tab3';
 import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 import {Task_Colors} from '../Utils/Values/color';
 import {lightMode} from '../Utils/Values';
+import Actions from '../Containers/Actions';
+import News from '../Containers/NewFeeds';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -17,7 +19,7 @@ const Stack = createStackNavigator();
 function TabBottom() {
     return (
         <Tab.Navigator
-            initialRouteName="Tab1"
+            initialRouteName="News"
             // barStyle={{backgroundColor: '#ffffff'}}
             tabBarOptions={{
                 activeTintColor:lightMode.green_dark,
@@ -39,21 +41,21 @@ function TabBottom() {
                     height: verticalScale(46),
                 },
             }}>
-            <Tab.Screen name="Tab1" component={Tab1}
+            <Tab.Screen name="News" component={News}
                         options={{
                             tabBarLabel: 'Tab1',
                             tabBarIcon: ({color, focused}) => (
                                 <Icon type={'FontAwesome'} name="group" color={color} size={focused ? 23 : 18}/>
                             ),
                         }}/>
-            <Tab.Screen name="Tab2" component={Tab2}
+            <Tab.Screen name="Tab1" component={Tab1}
                         options={{
                             tabBarLabel: 'Tab2',
                             tabBarIcon: ({color, focused}) => (
                                 <Icon type={'FontAwesome'} name="book" color={color} size={focused ? 23 : 18}/>
                             ),
                         }}/>
-            <Tab.Screen name="Tab3" component={Tab3}
+            <Tab.Screen name="Actions" component={Actions}
                         options={{
                             tabBarLabel: 'Tab3',
                             tabBarIcon: ({color, focused}) => (
@@ -66,7 +68,7 @@ function TabBottom() {
 
 function MainNavigation() {
     return (
-        <Stack.Navigator initialRouteName="Login"
+        <Stack.Navigator initialRouteName="Tab"
                          screenOptions={{
                              headerShown: false,
                          }}>

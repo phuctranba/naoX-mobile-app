@@ -328,7 +328,7 @@ PODS:
     - SDWebImageWebPCoder (~> 0.6.1)
   - RNGestureHandler (1.7.0):
     - React
-  - RNReanimated (1.13.0):
+  - RNReanimated (1.12.0):
     - React
   - RNScreens (2.10.1):
     - React
@@ -544,11 +544,11 @@ SPEC CHECKSUMS:
   React-RCTText: 1b6773e776e4b33f90468c20fe3b16ca3e224bb8
   React-RCTVibration: 4d2e726957f4087449739b595f107c0d4b6c2d2d
   ReactCommon: a0a1edbebcac5e91338371b72ffc66aa822792ce
-  RNCharts: d364ca2085e24edb9ee0390d3fb7209257daa44c
-  RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
+  RNCharts: e9461314e1930516d6c986d1be00440aeb26d5f2
+  RNCMaskedView: f5c7d14d6847b7b44853f7acb6284c1da30a3459
   RNFastImage: e19ba191922e7dab9d932a4d59d62d76660aa222
   RNGestureHandler: b6b359bb800ae399a9c8b27032bdbf7c18f08a08
-  RNReanimated: 89f5e0a04d1dd52fbf27e7e7030d8f80a646a3fc
+  RNReanimated: 9c475f9b272232351d94a1a781e8b7580bac1ff4
   RNScreens: b748efec66e095134c7166ca333b628cd7e6f3e2
   RNVectorIcons: da6fe858f5a65d7bbc3379540a889b0b12aa5976
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
