@@ -1,5 +1,8 @@
+/**
+ * Đăng nhập, đăng kí, quên mật khẩu
+ */
 import React, {Component} from 'react';
-import {Animated, Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {Animated, Image, StatusBar, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {lightMode} from '../../Utils/Values';
 import LottieView from 'lottie-react-native';
 import style from './style';
@@ -145,7 +148,7 @@ export default class Login extends Component {
             <LinearGradient colors={[lightMode.blue_light, lightMode.background]}
                             locations={[0, 0.35]}
                             start={{x: 1, y: 0}} end={{x: 0, y: 1}} style={this.style.container}>
-
+                <StatusBar translucent={true} backgroundColor="#00000000" barStyle="dark-content" />
                 <Image
                     style={this.style.image_logo}
                     resizeMode={'contain'}

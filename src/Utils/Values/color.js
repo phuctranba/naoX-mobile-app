@@ -7,6 +7,8 @@ export const lightMode={
     green:"#8bd8bd",
     green_dark:"#5aa58b",
     green_light:"#c0fde7",
+    green_white:"#effff7",
+    green_gray:"#c4ead8",
     transparent:"#ffffff00"
 };
 
@@ -31,12 +33,17 @@ export const Task_Colors={
     task_warning_light:"#ffbb33",
     task_warning_dark:"#FF8800",
     task_danger_light:"#ff4444",
+    task_danger:"#ce2d2d",
     task_danger_dark:"#CC0000",
     task_success_light:"#00C851",
+    task_success:"#2a9e58",
     task_success_dark:"#007E33",
+    task_white_blue:"#eefaff",
     task_info_light:"#33b5e5",
     task_info_dark:"#0099CC",
     task_load_gray:'rgb(191,191,191)',
+    task_white_gray:'rgb(243,243,243)',
+    task_white_green:'rgb(234,243,238)',
     task_elegant:"#2e2e2e",
     task_elegant_dark:"#212121",
     task_stylish:"#4B515D",

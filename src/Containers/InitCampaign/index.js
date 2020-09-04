@@ -1,3 +1,6 @@
+/**
+ * Khởi tạo chiến dịch
+ */
 import React, {Component} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import StepIndicator from 'react-native-step-indicator';

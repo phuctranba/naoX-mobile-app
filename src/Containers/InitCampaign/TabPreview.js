@@ -4,120 +4,8 @@ import {styleTabPreview} from './style';
 import FastImage from 'react-native-fast-image';
 import {moderateScale, verticalScale} from 'react-native-size-matters';
 import Icon from '../../Components/icon';
-import {convertNumber} from '../../Utils/Functions/convent_big_number';
-
-const datas = [
-    {
-        avatar: 'https://im4.ezgif.com/tmp/ezgif-4-7583d9b70f58.png',
-        user_name: 'Trần Bá Phúc',
-        time_posted: '20/07/2020',
-        content: 'Mong ad duyệt hộ bài giùm mình với ạ!!!\n' +
-            '.......\n' +
-            'Mình có đặt đồ ăn trên Now, mình có post bài review món ăn nhưng bị bên Now gỡ bỏ do vi phạm những quán bán chạy ảnh hưởng tới doanh thu của Now. Rất độc tài và coi thường sức khoẻ khách hàng miễn đem về lợi nhuận cho họ thì họ sẵn sàng bịt mồm...\n' +
-            '..... Chuyện là mình có đặt suất cơm gà bento 30k. Mình thấy quán trang trí suất ăn khá bắt mắt, đùi gà to tướng. Điều này là điểm ưu đánh vào tâm lý khách hàng.',
-        images: [],
-        react_count: 34,
-        react_type: {
-            like: 12,
-            love: 43,
-            support: 4,
-            haha: 7,
-            wow: 1,
-            sorry: 7,
-            anger: 0,
-        },
-        cmt_count: 345,
-        share_count: 23,
-    },
-    {
-        avatar: 'https://im4.ezgif.com/tmp/ezgif-4-7583d9b70f58.png',
-        user_name: 'Trần Bá Phúc',
-        time_posted: '20/07/2020',
-        content: 'Mong ad duyệt hộ bài giùm mình với ạ!!!\n' +
-            '.......\n' +
-            'Mình có đặt đồ ăn trên Now, mình có post bài review món ăn nhưng bị bên Now gỡ bỏ do vi phạm những quán bán chạy ảnh hưởng tới doanh thu của Now. Rất độc tài và coi thường sức khoẻ khách hàng miễn đem về lợi nhuận cho họ thì họ sẵn sàng bịt mồm...\n' +
-            '..... Chuyện là mình có đặt suất cơm gà bento 30k. Mình thấy quán trang trí suất ăn khá bắt mắt, đùi gà to tướng. Điều này là điểm ưu đánh vào tâm lý khách hàng.',
-        images: [],
-        react_count: 34,
-        react_type: {
-            like: 12,
-            love: 43,
-            support: 4,
-            haha: 7,
-            wow: 1,
-            sorry: 7,
-            anger: 0,
-        },
-        cmt_count: 345,
-        share_count: 23,
-    },
-    {
-        avatar: 'https://im4.ezgif.com/tmp/ezgif-4-7583d9b70f58.png',
-        user_name: 'Trần Bá Phúc',
-        time_posted: '20/07/2020',
-        content: 'Mong ad duyệt hộ bài giùm mình với ạ!!!\n' +
-            '.......\n' +
-            'Mình có đặt đồ ăn trên Now, mình có post bài review món ăn nhưng bị bên Now gỡ bỏ do vi phạm những quán bán chạy ảnh hưởng tới doanh thu của Now. Rất độc tài và coi thường sức khoẻ khách hàng miễn đem về lợi nhuận cho họ thì họ sẵn sàng bịt mồm...\n' +
-            '..... Chuyện là mình có đặt suất cơm gà bento 30k. Mình thấy quán trang trí suất ăn khá bắt mắt, đùi gà to tướng. Điều này là điểm ưu đánh vào tâm lý khách hàng.',
-        images: [],
-        react_count: 34,
-        react_type: {
-            like: 12,
-            love: 43,
-            support: 4,
-            haha: 7,
-            wow: 1,
-            sorry: 7,
-            anger: 0,
-        },
-        cmt_count: 345,
-        share_count: 23,
-    },
-    {
-        avatar: 'https://im4.ezgif.com/tmp/ezgif-4-7583d9b70f58.png',
-        user_name: 'Trần Bá Phúc',
-        time_posted: '20/07/2020',
-        content: 'Mong ad duyệt hộ bài giùm mình với ạ!!!\n' +
-            '.......\n' +
-            'Mình có đặt đồ ăn trên Now, mình có post bài review món ăn nhưng bị bên Now gỡ bỏ do vi phạm những quán bán chạy ảnh hưởng tới doanh thu của Now. Rất độc tài và coi thường sức khoẻ khách hàng miễn đem về lợi nhuận cho họ thì họ sẵn sàng bịt mồm...\n' +
-            '..... Chuyện là mình có đặt suất cơm gà bento 30k. Mình thấy quán trang trí suất ăn khá bắt mắt, đùi gà to tướng. Điều này là điểm ưu đánh vào tâm lý khách hàng.',
-        images: [],
-        react_count: 34,
-        react_type: {
-            like: 12,
-            love: 43,
-            support: 4,
-            haha: 7,
-            wow: 1,
-            sorry: 7,
-            anger: 0,
-        },
-        cmt_count: 345,
-        share_count: 23,
-    },
-    {
-        avatar: 'https://im4.ezgif.com/tmp/ezgif-4-7583d9b70f58.png',
-        user_name: 'Trần Bá Phúc',
-        time_posted: '20/07/2020',
-        content: 'Mong ad duyệt hộ bài giùm mình với ạ!!!\n' +
-            '.......\n' +
-            'Mình có đặt đồ ăn trên Now, mình có post bài review món ăn nhưng bị bên Now gỡ bỏ do vi phạm những quán bán chạy ảnh hưởng tới doanh thu của Now. Rất độc tài và coi thường sức khoẻ khách hàng miễn đem về lợi nhuận cho họ thì họ sẵn sàng bịt mồm...\n' +
-            '..... Chuyện là mình có đặt suất cơm gà bento 30k. Mình thấy quán trang trí suất ăn khá bắt mắt, đùi gà to tướng. Điều này là điểm ưu đánh vào tâm lý khách hàng.',
-        images: [],
-        react_count: 34,
-        react_type: {
-            like: 12,
-            love: 43,
-            support: 4,
-            haha: 7,
-            wow: 1,
-            sorry: 7,
-            anger: 0,
-        },
-        cmt_count: 345,
-        share_count: 23,
-    },
-];
+import {convertNumberWithCharacters} from '../../Utils/Functions/convent_big_number';
+import {FakeDataPreview} from '../../Utils/Values';
 
 const _render_item = (item, index, styles, Color) => {
     return (
@@ -150,7 +38,7 @@ const _render_item = (item, index, styles, Color) => {
                 {/*like*/}
                 <View style={[styles.view_info_detail]}>
                     <Icon type={'AntDesign'} name={'like1'} color={Color.blue_light} size={moderateScale(15)}/>
-                    <Text allowFontScaling={false} style={styles.text_detail}>{convertNumber(item.react_count)}</Text>
+                    <Text allowFontScaling={false} style={styles.text_detail}>{convertNumberWithCharacters(item.react_count)}</Text>
                 </View>
 
                 {/*Đường kẻ*/}
@@ -160,7 +48,7 @@ const _render_item = (item, index, styles, Color) => {
                 <View style={[styles.view_info_detail]}>
                     <Icon type={'FontAwesome'} name={'comment'} color={Color.blue_light}
                           size={moderateScale(15)}/>
-                    <Text allowFontScaling={false} style={styles.text_detail}>{convertNumber(item.cmt_count)}</Text>
+                    <Text allowFontScaling={false} style={styles.text_detail}>{convertNumberWithCharacters(item.cmt_count)}</Text>
                 </View>
 
                 {/*Đường kẻ*/}
@@ -170,7 +58,7 @@ const _render_item = (item, index, styles, Color) => {
                 <View style={[styles.view_info_detail]}>
                     <Icon type={'FontAwesome'} name={'share'} color={Color.blue_light} size={moderateScale(15)}/>
                     <Text allowFontScaling={false}
-                          style={styles.text_detail}>{convertNumber(item.share_count)}</Text>
+                          style={styles.text_detail}>{convertNumberWithCharacters(item.share_count)}</Text>
                 </View>
             </View>
         </View>
@@ -211,7 +99,7 @@ export const TabPreview = ({Color}) => {
                       style={styles.text_suggest}>{'Đây có chính xác là những gì bạn muốn phân tích và đánh giá?\n' +
                 'Tiếp tục nếu đúng, nếu không hãy chỉnh sửa bộ từ khóa tại bước trước.'}</Text>
 
-                {datas.map((post, index) => _render_item(post, index, styles, Color))}
+                {FakeDataPreview.map((post, index) => _render_item(post, index, styles, Color))}
             </ScrollView>
         </View>
     );

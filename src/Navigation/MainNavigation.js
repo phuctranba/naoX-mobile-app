@@ -1,35 +1,110 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import Login from '../Containers/Login/Login';
-import InitCampaign from '../Containers/InitCampaign/InitCampaign';
+import Login from '../Containers/Login';
+import InitCampaign from '../Containers/InitCampaign';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Icon from '../Components/icon';
-import Tab1 from '../Containers/Tab1';
-import Tab2 from '../Containers/Tab2';
-import Tab3 from '../Containers/Tab3';
 import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 import {Task_Colors} from '../Utils/Values/color';
 import {lightMode} from '../Utils/Values';
 import Actions from '../Containers/Actions';
 import News from '../Containers/NewFeeds';
+import Analysis from '../Containers/Analysis';
+import {Gender, Shade} from '../Containers/TabDetailAnalysis';
+import * as STYLE from '../Utils/Values/general_style';
 
-const Tab = createBottomTabNavigator();
+const TabBottom = createBottomTabNavigator();
+const TabTop = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
 
-function TabBottom() {
+function TabDetailAnalysis() {
     return (
-        <Tab.Navigator
-            initialRouteName="News"
+        <TabTop.Navigator
+            backBehavior={'none'}
+            initialRouteName={'Shade'}
+            tabBarPosition={'bottom'}
+            lazy={true}
+            lazyPreloadDistance={1}
+            tabBarOptions={{
+                activeTintColor:lightMode.green_dark,
+                showIcon:true,
+                inactiveTintColor:Task_Colors.task_load_gray,
+                upperCaseLabel: false,
+                scrollEnabled: true,
+                allowFontScaling:false,
+
+                pressColor: lightMode.green,
+                pressOpacity: 0.5,
+                style: {
+                    backgroundColor: 'white',
+                    justifyContent: 'center',
+                    paddingVertical:verticalScale(5),
+                },
+                labelStyle: {
+                    textTransform: 'none',
+                    fontSize: verticalScale(11),
+                    marginTop: 0,
+                    marginBottom: verticalScale(5),
+                    padding: 0
+                },
+                iconStyle: {
+                    margin: 0, padding: 0
+                },
+                tabStyle: {
+                    margin: 0, padding: 0
+                },
+                indicatorStyle: {
+                    backgroundColor: 'transparent',
+                },
+            }}
+        >
+            <TabTop.Screen name="Shade" component={Shade}
+                           options={{
+                               tabBarLabel: 'Sắc thái',
+                               tabBarIcon: ({color}) => (
+                                   <Icon type={'MaterialCommunityIcons'} name="format-list-text" color={color} size={moderateScale(18,1)}/>
+                               ),
+                           }}/>
+            <TabTop.Screen name="Gender" component={Gender}
+                           options={{
+                               tabBarLabel: 'Giới tính',
+                               tabBarIcon: ({color}) => (
+                                   <Icon type={'MaterialCommunityIcons'} name="format-list-text" color={color} size={moderateScale(18,1)}/>
+                               ),
+                           }}/>
+            <TabTop.Screen name="Shade2" component={Shade}
+                           options={{
+                               tabBarLabel: 'Sắc thái',
+                               tabBarIcon: ({color}) => (
+                                   <Icon type={'MaterialCommunityIcons'} name="format-list-text" color={color} size={moderateScale(18,1)}/>
+                               ),
+                           }}/>
+            <TabTop.Screen name="Shade3" component={Shade}
+                           options={{
+                               tabBarLabel: 'Sắc thái',
+                               tabBarIcon: ({color}) => (
+                                   <Icon type={'MaterialCommunityIcons'} name="format-list-text" color={color} size={moderateScale(18,1)}/>
+                               ),
+                           }}/>
+        </TabTop.Navigator>
+    );
+}
+
+function TabMain() {
+    return (
+        <TabBottom.Navigator
+            initialRouteName="Analysis"
             // barStyle={{backgroundColor: '#ffffff'}}
             tabBarOptions={{
                 activeTintColor:lightMode.green_dark,
                 inactiveTintColor:Task_Colors.task_load_gray,
                 showLabel:false,
                 style: {
-                    backgroundColor: lightMode.blue_light,
-                    marginHorizontal: scale(60),
+                    backgroundColor: lightMode.background,
+                    marginHorizontal: scale(80),
                     marginBottom: verticalScale(15),
-                    paddingHorizontal: verticalScale(10),
+                    paddingHorizontal: scale(10),
                     elevation: 2,
                     borderRadius: verticalScale(25),
                     position: 'absolute',
@@ -39,43 +114,51 @@ function TabBottom() {
                     // borderWidth: moderateScale(0.5),
                     borderColor: Task_Colors.task_load_gray,
                     height: verticalScale(46),
+                    ...STYLE.SHADOW_2
+                },
+                tabStyle: {
+                    height: verticalScale(46),
                 },
             }}>
-            <Tab.Screen name="News" component={News}
+            <TabBottom.Screen name="News" component={News}
                         options={{
                             tabBarLabel: 'Tab1',
                             tabBarIcon: ({color, focused}) => (
-                                <Icon type={'FontAwesome'} name="group" color={color} size={focused ? 23 : 18}/>
+                                <Icon type={'MaterialCommunityIcons'} name="format-list-text" color={color} size={focused ? moderateScale(25,1) : moderateScale(20,1)}/>
                             ),
                         }}/>
-            <Tab.Screen name="Tab1" component={Tab1}
+            <TabBottom.Screen name="Analysis" component={Analysis}
                         options={{
                             tabBarLabel: 'Tab2',
                             tabBarIcon: ({color, focused}) => (
-                                <Icon type={'FontAwesome'} name="book" color={color} size={focused ? 23 : 18}/>
+                                <Icon type={'MaterialCommunityIcons'} name="chart-bar-stacked" color={color} size={focused ? moderateScale(25,1) : moderateScale(20,1)}/>
                             ),
                         }}/>
-            <Tab.Screen name="Actions" component={Actions}
+            <TabBottom.Screen name="Actions" component={Actions}
                         options={{
                             tabBarLabel: 'Tab3',
                             tabBarIcon: ({color, focused}) => (
-                                <Icon type={'FontAwesome'} name="list-alt" color={color} size={focused ? 23 : 18}/>
+                                <Icon type={'MaterialCommunityIcons'} name="format-list-bulleted-type" color={color} size={focused ? moderateScale(25,1) : moderateScale(20,1)}/>
                             ),
                         }}/>
-        </Tab.Navigator>
+        </TabBottom.Navigator>
     );
 }
 
+
+
 function MainNavigation() {
     return (
-        <Stack.Navigator initialRouteName="Tab"
+        <Stack.Navigator initialRouteName="Login"
                          screenOptions={{
                              headerShown: false,
                          }}>
             <Stack.Screen name="Login" component={Login}/>
             <Stack.Screen name="InitCampaign" component={InitCampaign}/>
 
-            <Stack.Screen name="Tab" component={TabBottom}/>
+            <Stack.Screen name="TabMain" component={TabMain}/>
+            <Stack.Screen name="TabDetailAnalysis" component={TabDetailAnalysis}/>
+
 
         </Stack.Navigator>
     );

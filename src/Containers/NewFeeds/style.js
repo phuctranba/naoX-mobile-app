@@ -97,26 +97,6 @@ const styles = StyleSheet.create({
   contentArticle: {
     color: '#4d4d4d',
   },
-
-  // Style filter
-  filterDate: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 4,
-    backgroundColor: '#E9E9E9',
-    borderRadius: 5,
-  },
-  dateList: {},
-  fliterButton: {
-    padding: 4,
-    margin: 2,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius: 5,
-  },
-  titleButton: {
-    color: '#4d4d4d',
-  },
 });
 
 export default styles;

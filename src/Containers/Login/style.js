@@ -1,5 +1,6 @@
 import {moderateScale, ScaledSheet} from 'react-native-size-matters';
 import {lightMode} from '../../Utils/Values';
+import * as STYLE from '../../Utils/Values/general_style';
 
 export default style = (Color) => {
     return ScaledSheet.create({
@@ -57,20 +58,7 @@ export default style = (Color) => {
             alignItems: 'center',
             borderRadius: '25@ms',
             marginTop: '10@vs',
-            ...Platform.select({
-                ios: {
-                    shadowColor: "#000",
-                    shadowOffset: {
-                        width: 0,
-                        height: 1,
-                    },
-                    shadowOpacity: 0.4,
-                    shadowRadius: 2.22,
-                },
-                android: {
-                    elevation: 2
-                }
-            }),
+            ...STYLE.SHADOW,
             backgroundColor:Color.blue,
 
         },
@@ -99,20 +87,7 @@ export default style = (Color) => {
             justifyContent:'center',
             borderRadius: '25@ms',
             backgroundColor: Color.green_dark,
-            ...Platform.select({
-                ios: {
-                    shadowColor: "#000",
-                    shadowOffset: {
-                        width: 0,
-                        height: 1,
-                    },
-                    shadowOpacity: 0.4,
-                    shadowRadius: 2.22,
-                },
-                android: {
-                    elevation: 2
-                }
-            }),
+            ...STYLE.SHADOW,
         },
         view_icon_input:{
             width: '25@ms',

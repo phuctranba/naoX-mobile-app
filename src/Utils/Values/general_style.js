@@ -1,16 +1,29 @@
 import { ViewStyle } from "react-native";
+import {moderateScale} from 'react-native-size-matters';
 
 // đổ bóng shadow cho một đối tượng
 export const SHADOW: ViewStyle = {
   shadowColor: '#000',
   shadowOffset: {
     width: 0,
-    height: 2,
+    height: moderateScale(2,1),
   },
-  shadowOpacity: 0.1,
-  shadowRadius: 2.22,
+  shadowOpacity: 0.2,
+  shadowRadius: moderateScale(2.22,1),
 
   elevation: 3,
+};
+
+export const SHADOW_2: ViewStyle = {
+    shadowColor: '#000',
+    shadowOffset: {
+        width: 0,
+        height: moderateScale(2,1),
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: moderateScale(1.41,1),
+
+    elevation: 2,
 };
 
 // custom hàng căn giữa trục y

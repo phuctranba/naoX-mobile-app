@@ -8,9 +8,6 @@ export {
 // Bộ màu cho app
 export {
     lightMode as lightMode,
-    darkNormalMode as darkNormalMode,
-    darkBlueMode as darkBlueMode,
-    Oranges as Oranges,
     Task_Colors as Task_Colors
 } from "./color"
 
@@ -21,6 +18,6 @@ export {
 
 // String sử dụng trong app
 export {
-    button_task as button_task,
-    button_utilities as button_utilities,
+    AnalysisResults as AnalysisResults,
+    FakeDataPreview as FakeDataPreview,
 } from "./string"

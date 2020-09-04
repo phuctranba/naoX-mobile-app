@@ -22,7 +22,6 @@ import HeaderList from './HeaderList';
 function News() {
   return (
     <SafeAreaView style={styles.safeView}>
-      <StatusBar barStyle="default" />
       <View style={styles.container}>
         <View style={styles.topView}>
           <View style={styles.leftTop}>
