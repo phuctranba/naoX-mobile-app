@@ -2,7 +2,7 @@ import * as STYLE from '../../Utils/Values/general_style';
 import {moderateScale, ScaledSheet} from 'react-native-size-matters';
 import {Task_Colors} from '../../Utils/Values';
 
-export default style = (Color) => {
+const style = (Color) => {
     return ScaledSheet.create({
         //style view chính
         safeView: {
@@ -88,3 +88,5 @@ export default style = (Color) => {
         }
     });
 };
+
+export  default  style

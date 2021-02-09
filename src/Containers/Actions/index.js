@@ -4,7 +4,6 @@
 
 import React from 'react';
 import {
-  SafeAreaView,
   View,
   Text,
   StatusBar,
@@ -13,11 +12,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
+import {SafeAreaView} from 'react-native-safe-area-context'
 import styles from './style';
 import MenuCard from './MenuCard';
 import datas from './fakeData';
 import HeaderList from './HeaderList';
+import {lightMode} from '../../Utils/Values';
 
 function Actions() {
   return (
@@ -26,10 +26,13 @@ function Actions() {
       <View style={styles.container}>
         <View style={styles.topView}>
           <View style={styles.leftTop}>
-            <Text style={styles.nameApp}>naoX</Text>
-            <Text style={styles.slogan}>Giúp bạn tìm mọi thứ</Text>
+            <View style={styles.campaign}>
+              <Text style={styles.nameCampaign}>naoX</Text>
+              <Icon name="assignment" color={lightMode.blue} size={24}/>
+            </View>
+            <Text style={styles.unitAnalytics}>Giúp bạn tìm mọi thứ</Text>
           </View>
-          <Icon name="notifications" color="#7E7E7E" size={30} />
+          <Icon name="notifications" color={lightMode.blue_light} size={30}/>
         </View>
         <FlatList
           style={styles.list}

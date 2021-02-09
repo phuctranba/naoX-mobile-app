@@ -146,7 +146,7 @@ export default class InitCampaign extends Component {
                     {this.ListTab.map((page, index) => this.renderViewPagerPage(page.screen, index, styles))}
                 </Swiper>
 
-                <TouchableOpacity activeOpacity={0.5} style={styles.touchConfirm}>
+                <TouchableOpacity activeOpacity={0.5} style={styles.touchConfirm} onPress={()=>this.props.navigation.navigate("TabMain")}>
                     <Text style={styles.textConfirm}>{this.ListTab[this.state.posi].nameButton}</Text>
                 </TouchableOpacity>
                 <LinearGradient colors={[lightMode.transparent, lightMode.background]}

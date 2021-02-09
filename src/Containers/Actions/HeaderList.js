@@ -9,8 +9,8 @@ import styles from './style';
 function HeaderList() {
   return (
     <View style={styles.headerList}>
-      <Text style={styles.nameUser}>Tào Thuý Quỳnh</Text>
-      <Text style={styles.mail}>taothuyquynh.ks@gmail.com</Text>
+      <Text style={styles.nameUser}>Trần Văn Bưởi</Text>
+      <Text style={styles.mail}>admin@gmail.com</Text>
       <View style={styles.statistical}>
         <View style={styles.columnStatistical}>
           <Text style={styles.numberText}>6</Text>

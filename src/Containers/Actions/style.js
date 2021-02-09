@@ -1,12 +1,13 @@
 import {StyleSheet} from 'react-native';
 import { greaterThan } from 'react-native-reanimated';
 import * as STYLE from '../../Utils/Values/general_style';
+import {lightMode} from '../../Utils/Values';
 
 const styles = StyleSheet.create({
   // Style Actions
   safeView: {
     flex: 1,
-    backgroundColor: '#F8F8F8',
+    // backgroundColor: '#e1e7ed',
   },
   container: {
     flex: 1,
@@ -16,8 +17,26 @@ const styles = StyleSheet.create({
   topView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginBottom: 15,
+  },
+  leftTop: {},
+  campaign: {
+    flexDirection: 'row',
+    // justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: 8,
-  }, 
+  },
+  nameCampaign: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginRight: 4,
+    color: lightMode.blue,
+  },
+  notification: {},
+  unitAnalytics: {
+    fontSize: 16,
+    color: lightMode.blue,
+  },
   nameApp: {
     fontSize: 24,
     fontWeight: 'bold',

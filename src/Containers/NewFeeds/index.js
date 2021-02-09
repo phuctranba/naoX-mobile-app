@@ -4,7 +4,6 @@
 
 import React from 'react';
 import {
-  SafeAreaView,
   View,
   Text,
   StatusBar,
@@ -12,12 +11,14 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import styles from './style';
 import Article from './Article';
 import datas from './fakeData';
 import HeaderList from './HeaderList';
+import {lightMode} from '../../Utils/Values';
 
 function News() {
   return (
@@ -27,11 +28,11 @@ function News() {
           <View style={styles.leftTop}>
             <View style={styles.campaign}>
               <Text style={styles.nameCampaign}>Tên chiến dịch</Text>
-              <Icon name="assignment" color="#7E7E7E" size={24} />
+              <Icon name="assignment" color={lightMode.blue} size={24}/>
             </View>
             <Text style={styles.unitAnalytics}>Tên đơn vị phân tích</Text>
           </View>
-          <Icon name="notifications" color="#7E7E7E" size={30} />
+          <Icon name="notifications" color={lightMode.blue_light} size={30}/>
         </View>
         <FlatList
           style={styles.list}
