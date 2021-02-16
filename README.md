@@ -19,11 +19,11 @@ This is a social listening product, used with social networks and e-commerce sit
 * [React Native Snap Carousel](https://github.com/meliorence/react-native-snap-carousel)
 
 ## Screen Shot
-| <img src="./src/ScreenShot/signin.png" width="300"> | <img src="./src/ScreenShot/signup.png" width="300"> | <img src="./src/ScreenShot/reset_password.png" width="300"> |
+| <img src="./src/ScreenShot/signin.png" width="250"> | <img src="./src/ScreenShot/signup.png" width="250"> | <img src="./src/ScreenShot/reset_password.png" width="250"> |
 | - | - | - |
-| <img src="./src/ScreenShot/step_1.png" width="300"> | <img src="./src/ScreenShot/step_2.png" width="300"> | <img src="./src/ScreenShot/step_3.png" width="300"> |
+| <img src="./src/ScreenShot/step_1.png" width="250"> | <img src="./src/ScreenShot/step_2.png" width="250"> | <img src="./src/ScreenShot/step_3.png" width="250"> |
 | - | - | - |
-| <img src="./src/ScreenShot/general.png" width="300"> | <img src="./src/ScreenShot/newsfeed.png" width="300"> | <img src="./src/ScreenShot/detail.png" width="300"> |
+| <img src="./src/ScreenShot/general.png" width="250"> | <img src="./src/ScreenShot/newsfeed.png" width="250"> | <img src="./src/ScreenShot/detail.png" width="250"> |
 | - | - | - |
 
 
