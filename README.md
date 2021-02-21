@@ -22,9 +22,7 @@ This is a social listening product, used with social networks and e-commerce sit
 | <img src="./src/ScreenShot/signin.png" width="250"> | <img src="./src/ScreenShot/signup.png" width="250"> | <img src="./src/ScreenShot/reset_password.png" width="250"> |
 | - | - | - |
 | <img src="./src/ScreenShot/step_1.png" width="250"> | <img src="./src/ScreenShot/step_2.png" width="250"> | <img src="./src/ScreenShot/step_3.png" width="250"> |
-| - | - | - |
 | <img src="./src/ScreenShot/general.png" width="250"> | <img src="./src/ScreenShot/newsfeed.png" width="250"> | <img src="./src/ScreenShot/detail.png" width="250"> |
-| - | - | - |
 
 
 ## Support
